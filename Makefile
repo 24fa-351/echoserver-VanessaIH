@@ -2,4 +2,4 @@ main: main.c
 	gcc -o main main.c
 
 clean:
-	rm maikn
+	rm -f main
