@@ -53,11 +53,13 @@ int main(int argc, char *argv[]) {
     ssize_t reading_bytes;
     while ((reading_bytes = recv(client, buffer, sizeof(buffer)-1,0)) > 0) {
         buffer[reading_bytes] = '\0';
+        printf("Received from client: %s", buffer);
         send(client, buffer, reading_bytes, 0);
-        if (strchr(buffer, '\n')) {
-            break;
-        }
-    }    if (reading_bytes == 0) {
+        //if (strchr(buffer, '\n')) {
+        //    break;
+        //}
+    }
+    if (reading_bytes == 0) {
         printf("Client has been disconnected\n");
     } else if (reading_bytes < 0) {
         perror("Error in recv");
